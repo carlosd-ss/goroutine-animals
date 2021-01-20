@@ -1,6 +1,7 @@
-package main
+package player
 
 import (
+	"goroutines-music/colors"
 	"log"
 	"os"
 	"sync"
@@ -13,28 +14,28 @@ import (
 )
 
 var (
-	hihatSound = sound("drums/hihat.wav")
-	kickSound  = sound("drums/kick.wav")
-	snareSound = sound("drums/snare.wav")
+	lionSound = sound("drums/lion.wav")
+	eagleSound  = sound("drums/eagle.wav")
+	dolphinSound = sound("drums/dolphin.wav")
 )
 
 type Drum struct {
 	Tempo int
 }
 
-func (d Drum) hihat(rhythm string, wg *sync.WaitGroup) {
+func (d Drum) Lion(rhythm string, wg *sync.WaitGroup) {
 	defer wg.Done()
-	d.playbeat("prato", rhythm, hihatSound, blue)
+	d.playbeat("Leão", rhythm, lionSound, colors.Blue)
 }
 
-func (d Drum) kick(rhythm string, wg *sync.WaitGroup) {
+func (d Drum) Eagle(rhythm string, wg *sync.WaitGroup) {
 	defer wg.Done()
-	d.playbeat("bumbo", rhythm, kickSound, green)
+	d.playbeat("Águia", rhythm, eagleSound, colors.Green)
 }
 
-func (d Drum) snare(rhythm string, wg *sync.WaitGroup) {
+func (d Drum) Dolphin(rhythm string, wg *sync.WaitGroup) {
 	defer wg.Done()
-	d.playbeat("caixa", rhythm, snareSound, yellow)
+	d.playbeat("Golfinho", rhythm, dolphinSound, colors.Yellow)
 }
 
 func (d Drum) playbeat(name string, beats string, sound beep.StreamSeeker, color *color.Color) {

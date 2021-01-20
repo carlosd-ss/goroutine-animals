@@ -1,6 +1,7 @@
 package main
 
 import (
+	"goroutines-music/player"
 	"sync"
 )
 
@@ -8,15 +9,15 @@ func main() {
 	// - - - - - - - -
 	// 1 2 3 4 5 6 7 8
 
-	drum := Drum{
+	drum := player.Drum{
 		Tempo: 500,
 	}
 
 	wg := &sync.WaitGroup{}
 	wg.Add(3)
-	go drum.hihat("xxxxxxxx", wg)
-	go drum.kick("x---x---", wg)
-	go drum.snare("--x---x-", wg)
+	go drum.Eagle("x-x---x-x", wg)
+	go drum.Dolphin("x----x--x---", wg)
+	go drum.Lion("---x-x-x", wg)
 	wg.Wait()
 
 }
